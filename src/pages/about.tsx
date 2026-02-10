@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 import { Code2, Rocket, Heart, Coffee, ShieldCheck } from 'lucide-react';
 import api from '@/lib/api';
+import Link from 'next/link';
 
 export default function About() {
     const { data: aboutResponse } = useQuery({
@@ -16,7 +17,7 @@ export default function About() {
         role: 'Full Stack Engineer',
         description: 'Pioneering digital frontiers through code. Specializing in highly performant, aesthetic systems that redefine user experience.',
         experience: '3+ Years',
-        projects_completed: '50+'
+        projects_completed: '10+'
     };
 
     const experienceCards = [
@@ -24,6 +25,10 @@ export default function About() {
         { title: 'Artifacts', value: about.projects_completed || '50+', icon: Code2, color: 'text-secondary' },
         { title: 'Reputation', value: 'Elite', icon: ShieldCheck, color: 'text-accent' },
     ];
+
+    const aboutCv = about.about_cv || 'https://portfolio.adendan.com/assets/files/about-cv/1747862230.pdf';
+
+    console.log("About Data:", about.about_cv);
 
     return (
         <div className="pt-32 pb-20 min-h-screen container mx-auto px-4">
@@ -56,6 +61,10 @@ export default function About() {
                                 </div>
                             ))}
                         </div>
+                        {/* ! Download Cv Button ! */}
+                        <Link href={aboutCv} target="_blank" rel="noopener" className="inline-block mt-6 px-8 py-3 bg-primary text-background font-display font-bold uppercase tracking-widest rounded-lg hover:bg-primary/90 transition-colors shadow-[0_0_15px_rgba(0,255,255,0.3)]">
+                            Download CV
+                        </Link>
                     </div>
 
                     <div className="pt-8 flex flex-col gap-6">
