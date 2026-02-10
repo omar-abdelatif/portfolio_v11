@@ -20,7 +20,7 @@ export default function About() {
     };
 
     const experienceCards = [
-        { title: 'Runtime', value: about.experience || '5+ Years', icon: Rocket, color: 'text-primary' },
+        { title: 'Runtime', value: about.experience || '3+ Years', icon: Rocket, color: 'text-primary' },
         { title: 'Artifacts', value: about.projects_completed || '50+', icon: Code2, color: 'text-secondary' },
         { title: 'Reputation', value: 'Elite', icon: ShieldCheck, color: 'text-accent' },
     ];
@@ -39,7 +39,7 @@ export default function About() {
                             {about.name || 'OMAR'} <span className="text-primary text-glow">_DEV</span>
                         </h1>
                         <h2 className="text-2xl text-muted-foreground font-display uppercase tracking-widest">
-                            {about.role || 'Full Stack Architect'}
+                            {about.role || 'Full Stack Web Developer'}
                         </h2>
                     </div>
 
@@ -98,25 +98,37 @@ export default function About() {
                                 <p className="text-secondary"># SYSTEM MANIFEST</p>
                                 <p>
                                     <span className="text-primary">import</span>
-                                    {'{ Skillset }'}
-                                    <span className="text-primary">from</span>
+                                    {' { Skillset } '}
+                                    <span className="text-primary">from </span>
                                     <span className="text-accent">`{'@nexus/core'}`</span>;
                                 </p>
                                 <div className="mt-8 space-y-1">
                                     <p>
-                                        <span className="text-primary">const</span>
+                                        <span className="text-primary">const </span>
                                         <span className="text-white text-glow">Developer</span> = {'{'}
                                     </p>
                                     <p className="ml-4">name: <span className="text-accent">`{about.name || 'Alex'}`</span>,</p>
                                     <p className="ml-4">role: <span className="text-accent">`{about.role || 'Full Stack'}`</span>,</p>
                                     <p className="ml-4">status: <span className="text-accent">{'AWAKE'}</span>,</p>
-                                    <p className="ml-4">engine: <span className="text-accent">{'V8/TURBO'}</span>,</p>
-                                    <p className="ml-4">stack: [</p>
+                                    <p className="ml-4">engine: <span className="text-accent">{'V12/Twin TURBO'}</span>,</p>
+                                    <p className="ml-4">tools: [</p>
                                     <p className="ml-8 text-accent">{'React.js'},</p>
                                     <p className="ml-8 text-accent">{'Next.js'},</p>
-                                    <p className="ml-8 text-accent">{'Node.js'},</p>
+                                    <p className="ml-8 text-accent">{'Php'},</p>
                                     <p className="ml-8 text-accent">{'TailwindCSS'},</p>
-                                    <p className="ml-8 text-accent">{'TypeScript'}</p>
+                                    <p className="ml-8 text-accent">{'JavaScript'},</p>
+                                    <p className="ml-8 text-accent">{'Jquery'},</p>
+                                    <p className="ml-8 text-accent">{'Laravel'},</p>
+                                    <p className="ml-8 text-accent">{'Bootstrap'},</p>
+                                    <p className="ml-8 text-accent">{'Restful Api'},</p>
+                                    <p className="ml-8 text-accent">{'Adobe XD'},</p>
+                                    <p className="ml-8 text-accent">{'PhotoShop for Web'},</p>
+                                    <p className="ml-8 text-accent">{'Vscode'},</p>
+                                    <p className="ml-8 text-accent">ai: [</p>
+                                    <p className="ml-12 text-accent">        {'ChatGPT'},</p>
+                                    <p className="ml-12 text-accent">        {'Lovable'},</p>
+                                    <p className="ml-12 text-accent">        {'Replit'},</p>
+                                    <p className="ml-4">   ],</p>
                                     <p className="ml-4">],</p>
                                     <p className="ml-4">
                                         passion:
@@ -142,7 +154,7 @@ export default function About() {
 
                     <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }} className="absolute -bottom-8 -left-8 glass p-4 rounded-xl border-secondary/30 z-40 hidden md:block">
                         <div className="text-[10px] text-secondary font-display mb-1 tracking-widest uppercase">Location</div>
-                        <div className="text-xl font-bold font-display">NORTH-ATL-4</div>
+                        <div className="text-xl font-bold font-display">6th October City</div>
                     </motion.div>
                 </motion.div>
             </div>
