@@ -12,10 +12,10 @@ export default function About() {
 
     const aboutData = Array.isArray(aboutResponse) ? aboutResponse[0] : aboutResponse;
     const about = aboutData || {
-        name: 'Alex Dev',
+        name: 'Omar Abdelatif',
         role: 'Full Stack Engineer',
         description: 'Pioneering digital frontiers through code. Specializing in highly performant, aesthetic systems that redefine user experience.',
-        experience: '5+ Years',
+        experience: '3+ Years',
         projects_completed: '50+'
     };
 
@@ -96,9 +96,17 @@ export default function About() {
                         <div className="pt-20 px-8 pb-8 font-display text-sm sm:text-base leading-relaxed overflow-hidden h-full">
                             <pre className="text-white space-y-2">
                                 <p className="text-secondary"># SYSTEM MANIFEST</p>
-                                <p><span className="text-primary">import</span> {'{ Skillset }'} <span className="text-primary">from</span> <span className="text-accent">`{'@nexus/core'}`</span>;</p>
+                                <p>
+                                    <span className="text-primary">import</span>
+                                    {'{ Skillset }'}
+                                    <span className="text-primary">from</span>
+                                    <span className="text-accent">`{'@nexus/core'}`</span>;
+                                </p>
                                 <div className="mt-8 space-y-1">
-                                    <p><span className="text-primary">const</span> <span className="text-white text-glow">Developer</span> = {'{'}</p>
+                                    <p>
+                                        <span className="text-primary">const</span>
+                                        <span className="text-white text-glow">Developer</span> = {'{'}
+                                    </p>
                                     <p className="ml-4">name: <span className="text-accent">`{about.name || 'Alex'}`</span>,</p>
                                     <p className="ml-4">role: <span className="text-accent">`{about.role || 'Full Stack'}`</span>,</p>
                                     <p className="ml-4">status: <span className="text-accent">{'AWAKE'}</span>,</p>
@@ -110,7 +118,10 @@ export default function About() {
                                     <p className="ml-8 text-accent">{'TailwindCSS'},</p>
                                     <p className="ml-8 text-accent">{'TypeScript'}</p>
                                     <p className="ml-4">],</p>
-                                    <p className="ml-4">passion: <span className="text-primary">Infinity</span>,</p>
+                                    <p className="ml-4">
+                                        passion:
+                                        <span className="text-primary">Infinity</span>,
+                                    </p>
                                     <p>{'};'}</p>
                                 </div>
                                 <div className="mt-8">
