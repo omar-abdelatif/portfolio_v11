@@ -2,26 +2,17 @@
 
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Terminal } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { Project } from '@/components/types/project';
 
-interface Project {
-    id: string;
-    slug: string;
-    title: string;
-    short_description?: string;
-    image_url: string;
-    tags: string[];
-    live_url?: string;
-    github_url?: string;
-    is_featured?: boolean;
-}
-
-export default function ProjectCard({ project, index }: { project: any; index: number }) {
+export default function ProjectCard({ project, index }: { project: Project; index: number }) {
     // Mapping API fields
-    const title = project.name || project.title || "Project Alpha";
-    const description = project.description || project.short_description || "Secure encrypted data module.";
-    const image = project.image || project.image_url || `https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=400`;
-    const liveUrl = project.link || project.live_url;
+    const title = project.name;
+    const description = project.description;
+    const image = project.image;
+    const liveUrl = project.link;
+    const subcategory = project.subcategory;
 
     // Handle tags which might be a JSON string from the API
     let tags: string[] = ["System", "Nexus"];
@@ -29,7 +20,7 @@ export default function ProjectCard({ project, index }: { project: any; index: n
         if (project.tags) {
             const parsedTags = typeof project.tags === 'string' ? JSON.parse(project.tags) : project.tags;
             if (Array.isArray(parsedTags)) {
-                tags = parsedTags.map((t: any) => typeof t === 'string' ? t : t.value || t.name || JSON.stringify(t));
+                tags = parsedTags.map((t: string | { value?: string; name?: string }) => typeof t === 'string' ? t : t.value || t.name || JSON.stringify(t));
             }
         }
     } catch (e) {
@@ -40,22 +31,18 @@ export default function ProjectCard({ project, index }: { project: any; index: n
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} viewport={{ once: true }} className="group relative bg-card/40 glass overflow-hidden rounded-lg hover:border-primary/50 transition-all duration-500" >
             <div className="aspect-video relative overflow-hidden">
                 <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-                <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <Image src={image} alt={title} width={100} height={100} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 flex items-center justify-center gap-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
-                    <Link href={`/projects/${project.slug || project.id}`} className="px-6 py-2 bg-background/90 text-primary border border-primary hover:bg-primary hover:text-background font-bold uppercase text-xs tracking-widest rounded transition-all shadow-[0_0_15px_rgba(0,255,255,0.3)]">Access Data</Link>
+                    <Link href={`/projects/${project.slug}`} className="px-6 py-2 bg-background/90 text-primary border border-primary hover:bg-primary hover:text-background font-bold uppercase text-xs tracking-widest rounded transition-all shadow-[0_0_15px_rgba(0,255,255,0.3)]">Access Data</Link>
+                </div>
+                <div className="ribbon absolute bg-[#F7D990] top-10 -left-45px w-48 py-1 text-center px-3 text-xs font-bold uppercase tracking-wider text-yellow-800 rotate-45 transform-gpu">
+                    <span className="text-yellow-800 font-bold text-lg">{subcategory}</span>
                 </div>
             </div>
 
             <div className="p-6">
                 <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-display font-bold text-white group-hover:text-primary transition-colors tracking-tight">
-                        {title}
-                    </h3>
-                    {project.is_featured && (
-                        <span className="text-[10px] font-display text-accent border border-accent/30 bg-accent/5 px-2 py-0.5 rounded animate-pulse uppercase tracking-widest">
-                            PRIME
-                        </span>
-                    )}
+                    <h3 className="text-xl font-display font-bold text-white group-hover:text-primary transition-colors tracking-tight">{title}</h3>
                 </div>
                 <p className="text-muted-foreground text-sm mb-6 line-clamp-2 font-display leading-relaxed">{description}</p>
                 <div className="flex flex-wrap gap-2 mb-6">

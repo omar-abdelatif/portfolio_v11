@@ -148,16 +148,16 @@ export default function Contact() {
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div className="space-y-2">
                                                 <label className="text-[10px] font-display text-primary uppercase tracking-widest ml-1">Identity</label>
-                                                <input required name="name" value={form.name} onChange={handleChange} type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-primary/50 transition-all font-display text-white placeholder:text-muted-foreground/30" placeholder="Jane Doe" />
+                                                <input required name="name" value={form.name} onChange={handleChange} type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-primary/50 transition-all font-display text-white placeholder:text-muted-foreground/30" placeholder="Jane Doe" autoComplete='name'/>
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-[10px] font-display text-primary uppercase tracking-widest ml-1">Email</label>
-                                                <input required name="email" value={form.email} onChange={handleChange} type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-primary/50 transition-all font-display text-white placeholder:text-muted-foreground/30" placeholder="jane@example.com" />
+                                                <input required name="email" value={form.email} onChange={handleChange} type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-primary/50 transition-all font-display text-white placeholder:text-muted-foreground/30" placeholder="jane@example.com" autoComplete='email'/>
                                             </div>
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-[10px] font-display text-primary uppercase tracking-widest ml-1">Phone</label>
-                                            <input name="phone" value={form.phone} onChange={handleChange} type="tel" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-primary/50 transition-all font-display text-white placeholder:text-muted-foreground/30" placeholder="+1 (555) 000-0000" />
+                                            <input name="phone" value={form.phone} onChange={handleChange} type="number" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-primary/50 transition-all font-display text-white placeholder:text-muted-foreground/30" placeholder="+1 (555) 000-0000" autoComplete='phone'/>
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-[10px] font-display text-primary uppercase tracking-widest ml-1">Subject Protocol</label>
