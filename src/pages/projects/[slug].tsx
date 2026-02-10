@@ -7,6 +7,7 @@ import { ArrowLeft, ExternalLink, Github, Terminal, Database, Shield, Zap, User 
 import Link from 'next/link';
 import ProjectCard from '@/components/ProjectCard';
 import Image from 'next/image';
+import { Project } from '@/components/types/project';
 
 export default function ProjectDetails() {
     const router = useRouter();
@@ -170,7 +171,7 @@ export default function ProjectDetails() {
                             </h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {similarProjects.map((p: { id?: string | number; slug?: string }, idx: number) => (
+                            {similarProjects.map((p: Project, idx: number) => (
                                 <ProjectCard key={p.id || idx} project={p} index={idx} />
                             ))}
                         </div>
