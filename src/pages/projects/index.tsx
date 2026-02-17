@@ -20,8 +20,8 @@ export default function Projects() {
     });
 
     const filteredProjects = (Array.isArray(projects) ? projects : []).filter((p: Project) => {
-        // Category filter
-        const categoryMatch = selectedCategory === 'All' || p.category === selectedCategory;
+        // Category filter (case-insensitive comparison)
+        const categoryMatch = selectedCategory === 'All' || (p.subcategory || '').trim().toLowerCase().includes(selectedCategory.toLowerCase());
         
         // Search filter
         const titleMatch = (p.name || '').toLowerCase().includes(searchTerm.toLowerCase());
@@ -37,6 +37,8 @@ export default function Projects() {
         } catch (e) {
             console.error("Error parsing tags for filter", e);
         }
+        console.log("Selected:", selectedCategory);
+        console.log("Project Category:", p.subcategory);
 
         return categoryMatch && (titleMatch || tagsMatch);
     });
@@ -63,15 +65,13 @@ export default function Projects() {
                         {filteredProjects.length} RECORDS FOUND
                     </div>
                 </div>
-
                 {/* Category Filter Buttons */}
                 <div className="flex flex-wrap gap-2">
                     {CATEGORIES.map((category) => (
-                        <button key={category} onClick={() => setSelectedCategory(category)} className={`px-4 py-2 rounded-lg font-display text-sm transition-all ${ selectedCategory === category ? 'bg-primary text-primary-foreground border border-primary' : 'bg-white/5 border border-white/10 text-muted-foreground hover:border-primary/50'}`}>{category}</button>
+                        <button key={category} onClick={() => setSelectedCategory(category)} className={`px-4 py-2 rounded-lg font-display text-sm transition-all ${ selectedCategory === category ? 'bg-black text-white border border-black font-bold' : 'bg-white/5 border border-white/10 text-muted-foreground hover:border-primary/50'}`}>{category}</button>
                     ))}
                 </div>
             </div>
-
             {isLoading ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {[1, 2, 3, 4, 5, 6].map(n => (
@@ -85,7 +85,6 @@ export default function Projects() {
                     ))}
                 </div>
             )}
-
             {!isLoading && filteredProjects.length === 0 && (
                 <div className="text-center py-20 border border-dashed border-white/10 rounded-2xl glass">
                     <div className="text-destructive font-bold mb-2">404: NO DATA MATCHES FILTER</div>
